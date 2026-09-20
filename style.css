@@ -1,11 +1,4 @@
-/* ==========================================================
-   STYLE.CSS — Website Profil Zihan Rostianti
-   Tema: soft "3D" / neumorphic pink — kartu terlihat timbul,
-   nav bulat, teks 3D, dan background bintang bergerak.
-   ========================================================== */
 
-
-/* ---------- 1. VARIABEL WARNA ---------- */
 :root {
   --bg: #fdeef4;
   --surface: #fefcfd;
@@ -18,7 +11,6 @@
   --shadow-dark: #34081d;
 }
 
-/* ---------- 2. ELEMENT SELECTOR (menyasar tag langsung, sesuai HTML asli) ---------- */
 * {
   box-sizing: border-box;
 }
@@ -41,15 +33,11 @@ body {
   line-height: 1.6;
 }
 
-/* SEMUA TEKS */
 h1, h2, p, li, a, footer {
   font-family: "Times New Roman", Times, serif;
   color: #000000;
 }
 
-/* ---------- LAPISAN BINTANG BERGERAK DI BACKGROUND ---------- */
-/* Warna dasar (--bg) sekarang ikut ditaruh di sini sebagai layer paling belakang,
-   supaya nggak rebutan urutan tumpuk (z-index) dengan background body. */
 body::before,
 body::after {
   content: "";
@@ -83,8 +71,6 @@ body::after {
   animation: moveStars 45s linear infinite reverse, twinkle 3.5s ease-in-out infinite alternate-reverse;
 }
 
-
-
 @keyframes moveStars {
   from { transform: translate(0, 0); }
   to   { transform: translate(-600px, 400px); }
@@ -95,7 +81,6 @@ body::after {
   to   { opacity: 1; }
 }
 
-/* GROUPING SELECTOR: h1 & h2 pakai treatment yang sama, termasuk efek 3D teks */
 h1, h2 {
   position: relative;
   z-index: 1;
@@ -116,19 +101,6 @@ p {
   text-align: justify;
 }
 
-/* HR dibikin jadi garis pink tipis, bukan garis abu-abu default */
-hr {
-  position: relative;
-  z-index: 1;
-  border: none;
-  height: 3px;
-  width: 80px;
-  margin: 24px auto;
-  background: linear-gradient(90deg, var(--accent-warm), var(--accent));
-  border-radius: 4px;
-}
-
-/* ---------- 3. NAVBAR (ELEMENT SELECTOR "nav" + FLEXBOX) ---------- */
 nav {
   position: relative;
   z-index: 1;
@@ -196,7 +168,6 @@ header h1 { margin: 0; color: #fff5f9; }
   transform: translateY(-3px);
 }
 
-/* CLASS SELECTOR: link nav dibuat bulat penuh (pill) & terlihat "timbul" ala 3D */
 .nav-link {
   display: inline-block;
   padding: 12px 26px;
@@ -210,7 +181,6 @@ header h1 { margin: 0; color: #fff5f9; }
   transition: all 0.25s ease; /* HOVER wajib pakai transition halus */
 }
 
-/* HOVER (wajib): tombol "terangkat" & warnanya berubah */
 .nav-link:hover,
 .nav-link.active {
   color: #fff;
@@ -226,7 +196,6 @@ header h1 { margin: 0; color: #fff5f9; }
               inset -3px -3px 6px var(--accent);
 }
 
-/* ---------- 4. ID SELECTOR: kotak biodata (foto + sapaan) ---------- */
 #biodata {
   display: flex;
  align-items: center;
@@ -241,7 +210,7 @@ border-left: 10px solid #b83368;
 box-shadow: 0 8px 20px rgba(142, 27, 79, 0.15);
 }
 
-/* BOX MODEL: padding, border, margin sekaligus. WIDTH & HEIGHT juga di sini. */
+
 .profile-photo {
   width: 260px;
  height: 260px;
@@ -257,14 +226,12 @@ box-shadow: 0 12px 28px rgba(142, 27, 79, 0.3);
   animation: fadeInUp 0.8s ease both;
 }
 
-/* HOVER dengan sentuhan 3D asli: foto terlihat miring saat disorot */
 .profile-photo:hover {
   transform: perspective(500px) rotateY(8deg) rotateX(4deg) scale(1.04);
   box-shadow: 12px 12px 22px var(--shadow-dark),
               -12px -12px 22px var(--shadow-light);
 }
 
-/* CLASS SELECTOR: kartu perkenalan & kartu skill, gaya "timbul" yang sama */
 .intro-card {
   position: relative;
   z-index: 1;
@@ -277,7 +244,6 @@ box-shadow: 0 8px 20px rgba(142, 27, 79, 0.15);
   animation: fadeInUp 0.8s ease 0.15s both;
 }
 
-/* FLEXBOX kedua: daftar skill dijejer sebagai "chip" */
 .skills-list {
   list-style: none;
   display: flex;
@@ -305,7 +271,7 @@ box-shadow: 0 8px 20px rgba(142, 27, 79, 0.15);
   transform: translateY(-4px);
 }
 
-/* ---------- 5. FOOTER (ELEMENT SELECTOR) ---------- */
+
 footer {
   position: relative;
   z-index: 1;
@@ -320,7 +286,6 @@ footer {
   clip-path: inset(0 -100vmax);
 }
 
-/* ---------- 6. ANIMASI (opsional, tantangan tambahan) ---------- */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -418,7 +383,7 @@ button:hover { transform: translateY(-3px); }
   nav { justify-content: center; }
   #biodata { flex-direction: column-reverse; text-align: center; }
 }
-/* ---------- LAPISAN LOVE BERGERAK ---------- */
+
 html::before,
 html::after {
   content: "";
