@@ -1,0 +1,534 @@
+/* ==========================================================
+   STYLE.CSS — Website Profil Zihan Rostianti
+   Tema: soft "3D" / neumorphic pink — kartu terlihat timbul,
+   nav bulat, teks 3D, dan background bintang bergerak.
+   ========================================================== */
+
+
+/* ---------- 1. VARIABEL WARNA ---------- */
+:root {
+  --bg: #fdeef4;
+  --surface: #fefcfd;
+  --text: #920751;
+  --text-soft: #e4126a;
+  --accent: #ff0569;
+  --accent-dark: #1a0d12;
+  --accent-warm: #990429;
+  --shadow-light: #010000;
+  --shadow-dark: #34081d;
+}
+
+/* ---------- 2. ELEMENT SELECTOR (menyasar tag langsung, sesuai HTML asli) ---------- */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: linear-gradient(180deg, #79656f 0%, #f80466 100%);
+  background-attachment: fixed;
+}
+
+body {
+  padding: 60px 40px 60px;
+  display: flex;
+  flex-direction: column;
+   gap: 36px;
+ padding: 30px 40px 60px;
+ text-align: left;
+  margin: 0;
+  color: #000000;
+ font-family: "Times New Roman", Times, serif;
+  line-height: 1.6;
+}
+
+/* SEMUA TEKS */
+h1, h2, p, li, a, footer {
+  font-family: "Times New Roman", Times, serif;
+  color: #000000;
+}
+
+/* ---------- LAPISAN BINTANG BERGERAK DI BACKGROUND ---------- */
+/* Warna dasar (--bg) sekarang ikut ditaruh di sini sebagai layer paling belakang,
+   supaya nggak rebutan urutan tumpuk (z-index) dengan background body. */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: -700px;
+  z-index: 0;
+  pointer-events: none;
+  background-repeat: repeat;
+}
+
+body::before {
+  background-image:
+    radial-gradient(4px 4px at 20px 30px, #ffffff, transparent),
+    radial-gradient(3px 3px at 90px 70px, #ffffff, transparent),
+    radial-gradient(4px 4px at 150px 20px, #ffd3e6, transparent),
+    radial-gradient(3px 3px at 200px 100px, #ffffff, transparent),
+    radial-gradient(2.5px 2.5px at 260px 50px, #ffffff, transparent);
+  background-size: 280px 140px, 280px 140px, 280px 140px, 280px 140px, 280px 140px, auto;
+  opacity: 1;
+  animation: moveStars 25s linear infinite, twinkle 2.5s ease-in-out infinite alternate;
+}
+
+body::after {
+  background-image:
+    radial-gradient(3px 3px at 40px 60px, #ffffff, transparent),
+    radial-gradient(2.5px 2.5px at 120px 10px, #ffd3e6, transparent),
+    radial-gradient(4px 4px at 180px 90px, #ffffff, transparent),
+    radial-gradient(2.5px 2.5px at 240px 40px, #ffffff, transparent);
+  background-size: 320px 180px;
+  opacity: 0.85;
+  animation: moveStars 45s linear infinite reverse, twinkle 3.5s ease-in-out infinite alternate-reverse;
+}
+
+
+
+@keyframes moveStars {
+  from { transform: translate(0, 0); }
+  to   { transform: translate(-600px, 400px); }
+}
+
+@keyframes twinkle {
+  from { opacity: 0.4; }
+  to   { opacity: 1; }
+}
+
+/* GROUPING SELECTOR: h1 & h2 pakai treatment yang sama, termasuk efek 3D teks */
+h1, h2 {
+  position: relative;
+  z-index: 1;
+  font-family: "Times New Roman", Times, serif;
+  color: #000000;
+  margin: 0 0 12px;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+p {
+  position: relative;
+  z-index: 1;
+  color: var(--text-soft);
+  font-size: 15px;
+  text-align: justify;
+}
+
+/* HR dibikin jadi garis pink tipis, bukan garis abu-abu default */
+hr {
+  position: relative;
+  z-index: 1;
+  border: none;
+  height: 3px;
+  width: 80px;
+  margin: 24px auto;
+  background: linear-gradient(90deg, var(--accent-warm), var(--accent));
+  border-radius: 4px;
+}
+
+/* ---------- 3. NAVBAR (ELEMENT SELECTOR "nav" + FLEXBOX) ---------- */
+nav {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: -60px;
+  padding: 26px 0;
+  background: #b83368;
+  box-shadow: 0 0 0 100vmax #b83368;
+  clip-path: inset(0 -100vmax);
+}
+header h1 { margin: 0; color: #fff5f9; }
+
+#biodata .biodata-text { flex: 1; }
+#biodata .biodata-text p { text-align: left; }
+#biodata .biodata-text h3 {
+  margin: 0 0 12px;
+  font-size: 20px;
+  color: var(--accent);
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 12px 26px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.btn-fill {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 4px 4px 10px var(--shadow-dark),
+              -4px -4px 10px var(--shadow-light);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--accent-dark);
+  border: 2px solid var(--accent);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+/* CLASS SELECTOR: link nav dibuat bulat penuh (pill) & terlihat "timbul" ala 3D */
+.nav-link {
+  display: inline-block;
+  padding: 12px 26px;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: 6px 6px 12px var(--shadow-dark),
+              -6px -6px 12px var(--shadow-light);
+  transition: all 0.25s ease; /* HOVER wajib pakai transition halus */
+}
+
+/* HOVER (wajib): tombol "terangkat" & warnanya berubah */
+.nav-link:hover,
+.nav-link.active {
+  color: #fff;
+  background: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 6px 6px 14px var(--shadow-dark),
+              -6px -6px 14px var(--shadow-light);
+}
+
+.nav-link:active {
+  transform: translateY(0);
+  box-shadow: inset 3px 3px 6px var(--accent-dark),
+              inset -3px -3px 6px var(--accent);
+}
+
+/* ---------- 4. ID SELECTOR: kotak biodata (foto + sapaan) ---------- */
+#biodata {
+  display: flex;
+ align-items: center;
+ justify-content: space-between;
+ gap: 40px;
+ padding: 48px 40px;
+ margin-bottom: 0;
+  border-radius: 20px;
+  background: #fff5f9;
+border: none;
+border-left: 10px solid #b83368;
+box-shadow: 0 8px 20px rgba(142, 27, 79, 0.15);
+}
+
+/* BOX MODEL: padding, border, margin sekaligus. WIDTH & HEIGHT juga di sini. */
+.profile-photo {
+  width: 260px;
+ height: 260px;
+ margin: 0;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+  background: var(--surface);
+ padding: 0;
+border: 10px solid #b83368;
+box-shadow: 0 12px 28px rgba(142, 27, 79, 0.3);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: fadeInUp 0.8s ease both;
+}
+
+/* HOVER dengan sentuhan 3D asli: foto terlihat miring saat disorot */
+.profile-photo:hover {
+  transform: perspective(500px) rotateY(8deg) rotateX(4deg) scale(1.04);
+  box-shadow: 12px 12px 22px var(--shadow-dark),
+              -12px -12px 22px var(--shadow-light);
+}
+
+/* CLASS SELECTOR: kartu perkenalan & kartu skill, gaya "timbul" yang sama */
+.intro-card {
+  position: relative;
+  z-index: 1;
+  background: #fff5f9;
+border: none;
+box-shadow: 0 8px 20px rgba(142, 27, 79, 0.15);
+  border-radius: 18px;
+  padding: 28px 26px;
+  margin-bottom: 28px;
+  animation: fadeInUp 0.8s ease 0.15s both;
+}
+
+/* FLEXBOX kedua: daftar skill dijejer sebagai "chip" */
+.skills-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 0;
+  margin: 16px 0 0;
+}
+
+.skill-item {
+  background: #fbdce8;
+ color: #8e1b4f;
+  font-weight: 500;
+  padding: 10px 18px;
+  border-radius: 30px;
+  box-shadow: 4px 4px 10px var(--shadow-dark),
+              -4px -4px 10px var(--shadow-light);
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.skill-item:hover {
+  background: var(--accent-warm);
+  color: #fff;
+  transform: translateY(-4px);
+}
+
+/* ---------- 5. FOOTER (ELEMENT SELECTOR) ---------- */
+footer {
+  position: relative;
+  z-index: 1;
+  padding: 22px 0;
+  font-size: 13px;
+  color: #fff5f9;
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: -60px;
+  background: #b83368;
+  box-shadow: 0 0 0 100vmax #b83368;
+  clip-path: inset(0 -100vmax);
+}
+
+/* ---------- 6. ANIMASI (opsional, tantangan tambahan) ---------- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.intro-card h2:not(:first-child) { margin-top: 32px; }
+
+table, th, td { border: 1px solid #fc0473; }
+table {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  background: #ffffff;
+}
+th, td {
+  padding: 12px 16px;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+th { background: #fbdce8; color: #8e1b4f; }
+td { color: #6b1a3f; background: #ede9eb }
+tr:nth-child(even) td { background: #f5f3f4; }
+
+ol { margin: 12px 0 0; padding-left: 24px; list-style: disc; }
+ol li { color: #6b1a3f; margin-bottom: 6px; }
+li::marker { color: #d6407f; }
+ul { margin: 12px 0 0; padding-left: 24px; }
+
+.intro-card p a { color: #d6407f; font-weight: 600; }
+
+th[colspan] {
+  width: auto;
+  text-align: center;
+  background: #b83368;
+  color: #f5f2f3;
+}
+td[colspan] { text-align: center; }
+
+.intro-card form table { max-width: 760px; }
+.intro-card hr { margin: 20px 0; }
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #f0b6cd;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #6b1a3f;
+  font-family: inherit;
+  font-size: 15px;
+}
+input:focus, select:focus, textarea:focus {
+  outline: 2px solid #d6407f;
+  border-color: #d6407f;
+}
+textarea { resize: vertical; }
+
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: #d6407f;
+  margin-right: 6px;
+}
+td input[type="radio"]:not(:first-child) { margin-left: 16px; }
+
+button {
+  padding: 12px 26px;
+  border: 2px solid #d6407f;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+button[type="submit"] { background: #d6407f; color: #ffffff; }
+button[type="reset"]  { background: transparent; color: #8e1b4f; }
+button:hover { transform: translateY(-3px); }
+
+@media (max-width: 800px) {
+  header { flex-direction: column; }
+  nav { justify-content: center; }
+  #biodata { flex-direction: column-reverse; text-align: center; }
+}
+/* ---------- LAPISAN LOVE BERGERAK ---------- */
+html::before,
+html::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-repeat: repeat;
+}
+
+html::before {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><defs><path id='h' d='M50 88C10 60 0 35 0 22C0 8 12 0 25 0C37 0 46 7 50 15C54 7 63 0 75 0C88 0 100 8 100 22C100 35 90 60 50 88Z'/></defs><use href='%23h' transform='translate(40 50) scale(0.9)' fill='white' opacity='0.55'/><use href='%23h' transform='translate(230 170) scale(1.2)' fill='rgb(255,110,150)' opacity='0.35'/><use href='%23h' transform='translate(90 280) scale(0.7)' fill='white' opacity='0.5'/><use href='%23h' transform='translate(320 30) scale(0.6)' fill='rgb(255,110,150)' opacity='0.4'/></svg>");
+  background-size: 400px 400px;
+  animation: floatHearts 30s linear infinite, twinkle 3s ease-in-out infinite alternate;
+}
+
+html::after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='560' height='560'><defs><path id='h' d='M50 88C10 60 0 35 0 22C0 8 12 0 25 0C37 0 46 7 50 15C54 7 63 0 75 0C88 0 100 8 100 22C100 35 90 60 50 88Z'/></defs><use href='%23h' transform='translate(60 120) scale(0.6)' fill='rgb(255,110,150)' opacity='0.35'/><use href='%23h' transform='translate(300 40) scale(0.8)' fill='white' opacity='0.5'/><use href='%23h' transform='translate(430 330) scale(0.65)' fill='white' opacity='0.45'/><use href='%23h' transform='translate(150 440) scale(0.9)' fill='rgb(255,110,150)' opacity='0.3'/></svg>");
+  background-size: 560px 560px;
+  animation: floatHearts2 45s linear infinite, twinkle 4.5s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes floatHearts {
+  from { background-position: 0 0; }
+  to   { background-position: 0 -800px; }
+}
+
+@keyframes floatHearts2 {
+  from { background-position: 0 0; }
+  to   { background-position: 0 -1120px; }
+}
+
+.project-photo {
+  display: block;
+  max-width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(142, 27, 79, 0.25);
+  margin: 12px 0 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-photo:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(142, 27, 79, 0.35);
+}
+
+.photo-box {
+  position: relative;
+  display: inline-block;
+  padding: 14px;
+  border-radius: 18px;
+  margin: 8px;
+  background: #ff5da2;
+}
+
+.musik-wrap {
+  position: relative;
+  overflow: hidden;
+  margin: 20px 0;
+  min-height: 70px;
+  border-radius: 20px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+}
+
+.musik-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: linear-gradient(135deg, #2b0f1c, #4a0f2a);
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 20px 20px 0 0;
+  animation: musikSlide 6s ease-in-out infinite;
+}
+
+.musik-card .musik-icon {
+  font-size: 28px;
+  animation: musikBounce 1.2s ease-in-out infinite;
+}
+
+.musik-card .musik-info { flex: 1; }
+.musik-card .musik-title { font-weight: 700; font-size: 15px; color: #fff; }
+.musik-card .musik-artist { font-size: 12px; opacity: 0.75; color: #ffd3e6; }
+
+.musik-card .musik-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 18px;
+}
+.musik-card .musik-bars span {
+  width: 3px;
+  background: #ff6fa5;
+  border-radius: 2px;
+  animation: musikBar 0.9s ease-in-out infinite;
+}
+.musik-card .musik-bars span:nth-child(2) { animation-delay: 0.2s; }
+.musik-card .musik-bars span:nth-child(3) { animation-delay: 0.4s; }
+
+
+@keyframes musikSlide {
+  0%   { transform: translateX(-110%); opacity: 0; }
+  15%  { transform: translateX(0); opacity: 1; }
+  80%  { transform: translateX(0); opacity: 1; }
+  100% { transform: translateX(110%); opacity: 0; }
+}
+@keyframes musikBounce {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.15) rotate(-8deg); }
+}
+@keyframes musikBar {
+  0%, 100% { height: 4px; }
+  50%      { height: 18px; }
+}

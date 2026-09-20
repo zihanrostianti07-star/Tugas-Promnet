@@ -3,37 +3,53 @@
 <head>
  <meta charset="UTF-8">
  <title>Home - Website Profil Zihan Rostianti</title>
+ <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+ <header>
  <h1>Website Profil Mahasiswa</h1>
  <nav>
- <a href="index.html">Home</a> |
- <a href="about.html">About</a> |
- <a href="kontak.html">Kontak</a> |
- <a href="project.html">Project</a> |
- <a href="katalog.html">Katalog</a> |
-
+  <a href="index.html" class="nav-link">Home</a>
+  <a href="about.html" class="nav-link">About</a>
+  <a href="kontak.html" class="nav-link">Kontak</a>
+  <a href="project.html" class="nav-link">Project</a>
+  <a href="katalog.html" class="nav-link">Katalog</a>
  </nav>
- <hr>
- <h2 id="biodata">Halo, Saya Zihan Rostianti</h2>
- <img src="profile.jpeg"
- alt="Foto profil Zihan Rostianti" width="220">
+</header>
+
+ <div id="biodata">
+  <div class="biodata-text">
+  <h2>Halo, Saya Zihan Rostianti</h2>
+  <h3>Mahasiswa Pendidikan Sistem dan Teknologi Informasi</h3>
+<p>Saat ini saya tertarik pada pengembangan web dan desain antarmuka.</p>
+  <div class="buttons">
+    <a href="kontak.html" class="btn btn-fill">Kontak Saya</a>
+    <a href="project.html" class="btn btn-outline">Lihat Project</a>
+  </div>
+</div>
+  <img class="profile-photo" src="profile.jpeg" alt="Foto profil Zihan Rostianti" width="220">
+</div>
+ <div class="intro-card">
  <h2>Welcome to My Personal Website</h2>
  <p>
- Saya mahasiswa Program Studi Pendidikan Sistem dan Teknologi Informasi yang sedang mempelajari
- dasar pembuatan halaman web menggunakan HTML, teknologi informasi, dan desaian antarmuka, website ini dibuat untuk menampilkan profil saya, project yang telah saya kerjakan, dan informasi kontak saya. Silakan jelajahi website ini untuk mengetahui lebih lanjut tentang saya.
+  Saya mahasiswa Program Studi Pendidikan Sistem dan Teknologi Informasi yang sedang mempelajari
+  dasar pembuatan halaman web menggunakan HTML, teknologi informasi, dan desaian antarmuka, website ini dibuat untuk menampilkan profil saya, project yang telah saya kerjakan, dan informasi kontak saya. Silakan jelajahi website ini untuk mengetahui lebih lanjut tentang saya.
  </p>
- <p>Saat ini saya tertarik pada pengembangan web dan desain antarmuka.</p>
+</div>
+ <div class="intro-card" id="skills">
  <h2 id="Hal yang sedang dipelajari">Hal yang sedang saya pelajari</h2>
  <ul>
- <li>HTML dasar</li>
- <li>Algoritma pemograman</li>
- <li>Git dan github</li>
+ <ul class="skills-list">
+     <li class="skill-item">HTML dasar</li>
+     <li class="skill-item">Algoritma pemograman</li>
+     <li class="skill-item">Git dan github</li>
  </ul>
+ </div>
+
   <!-- Footer -->
     <footer>
         © 2026 Zihan Rostianti.
     </footer>
-
 </body>
 </html>
